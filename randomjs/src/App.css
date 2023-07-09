@@ -56,15 +56,25 @@
   padding: 2px 16px;
   background-color: #5cb85c;
   color: white;
+  text-align: center;
+  width: 100%;
 }
 
 .modal-header {
   padding: 2px 16px;
   background-color: #5cb85c;
   color: white;
+  width: 100%;
 }
 .modal-body {
+  margin: 10px auto;
   padding: 2px 16px;
+  background: #fff;
+  display: flex;
+  gap: 1.5rem;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 @keyframes animatetop {
   from {top: -300px; opacity: 0}
@@ -79,7 +89,7 @@
 
 .close:hover,
 .close:focus {
-  color: black;
+  color: purple;
   text-decoration: none;
   cursor: pointer;
 }

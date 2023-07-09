@@ -8,9 +8,11 @@ function App() {
     const modaSet = document.getElementById('modal')
     modaSet.style.display = 'block'
   }
-  const closeModal = () => {
+  const closeModal = (e) => {
     const modaSet = document.getElementById('modal')
-    modaSet.style.display = 'none'
+    if(e.target.id === 'modal' || e.target.id === 'closeicon'){
+      modaSet.style.display = 'none'
+    }
   }
   return (
     <div className="App">
