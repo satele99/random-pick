@@ -5,13 +5,22 @@ import { useState } from 'react';
 
 function App() {
   const [text, setText] = useState('');
+  const [task, setTask] = useState([]);
 
   const submit = (e) => {
     e.preventDefault();
     let inputText = document.getElementById('text_input');
     inputText.value = ''
-    console.log(text)
+    const newTask = [...task, text]
+    setTask(newTask)
   }
+
+  const deleteThis = (index) => {
+    const updateTask = [...task]
+    updateTask.splice(index, 1)
+    setTask(updateTask);
+  }
+  // onSubmit I want to take the text and create a new task.
   return (
     <div className="App">
       <Navbar/>
@@ -23,7 +32,11 @@ function App() {
         </div>
       </form>
       <section className='task_container'>
-        <Inputs/>
+        {
+          task.map((item, index) => (
+            <Inputs text={item} key={index} delete={()=> {deleteThis(index)}}/>
+          ))
+        }
       </section>
     </div>
   );
