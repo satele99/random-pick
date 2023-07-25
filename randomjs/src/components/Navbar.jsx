@@ -1,10 +1,10 @@
 export default function Navbar(props) {
     return (
-        <nav class="navbar bg-body-tertiary">
-            <div class="container-fluid" style={{justifyContent: 'space-around'}}>
-                <span class="navbar-brand mb-0 h1">Random Pick</span>
+        <nav className="navbar bg-body-tertiary">
+            <div className="container-fluid" style={{justifyContent: 'space-around'}}>
+                <span className="navbar-brand mb-0 h1">Random Pick</span>
                 <span>
-                    <button className="circle" onClick={props.open}>+</button>
+                    <button className="btn btn-success" >Randomize</button>
                 </span>
             </div>
         </nav>

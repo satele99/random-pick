@@ -1,23 +1,30 @@
 import './App.css';
 import Navbar from './components/Navbar';
-import Modal from './components/Modal';
+import Inputs from './components/Inputs'
+import { useState } from 'react';
 
 function App() {
-  
-  const openModal = () => {
-    const modaSet = document.getElementById('modal')
-    modaSet.style.display = 'block'
-  }
-  const closeModal = (e) => {
-    const modaSet = document.getElementById('modal')
-    if(e.target.id === 'modal' || e.target.id === 'closeicon'){
-      modaSet.style.display = 'none'
-    }
+  const [text, setText] = useState('');
+
+  const submit = (e) => {
+    e.preventDefault();
+    let inputText = document.getElementById('text_input');
+    inputText.value = ''
+    console.log(text)
   }
   return (
     <div className="App">
-      <Navbar open={openModal}/>
-      <Modal close={closeModal}/>
+      <Navbar/>
+      <form onSubmit={submit}>
+        <label for="text_input">Enter Text Here:</label>
+        <div className='format'>
+          <input onChange={(e)=> {setText(e.target.value)}} id='text_input' className="form-control mr-sm-2" type='text'/>
+          <button className="btn btn-outline-success">Add</button>
+        </div>
+      </form>
+      <section className='task_container'>
+        <Inputs/>
+      </section>
     </div>
   );
 }
