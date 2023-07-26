@@ -2,10 +2,14 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Inputs from './components/Inputs'
 import { useState } from 'react';
+import Popup from './components/Modal';
 
 function App() {
   const [text, setText] = useState('');
   const [task, setTask] = useState([]);
+  const [random, setRandom] = useState('No items added. Please add items first.')
+
+  const [modal, setModal] = useState(false)
 
   const submit = (e) => {
     e.preventDefault();
@@ -20,10 +24,25 @@ function App() {
     updateTask.splice(index, 1)
     setTask(updateTask);
   }
-  // onSubmit I want to take the text and create a new task.
+
+  const getRandomElement = (arr) => {
+    if(arr.length < 1){
+      return
+    }
+    const randomIndex = Math.floor(Math.random() * arr.length)
+    let selection = arr[randomIndex]
+    setRandom(selection) 
+  }
+
+  const toggleModal = () => {
+    setModal(!modal)
+    getRandomElement(task)
+  }
+
+
   return (
     <div className="App">
-      <Navbar/>
+      <Navbar toggle={()=> {toggleModal()}}/>
       <form onSubmit={submit}>
         <label for="text_input">Enter Text Here:</label>
         <div className='format'>
@@ -38,6 +57,7 @@ function App() {
           ))
         }
       </section>
+      <Popup open={modal} close={()=> {toggleModal()}} text={random}/>
     </div>
   );
 }

@@ -4,7 +4,7 @@ export default function Navbar(props) {
             <div className="container-fluid" style={{justifyContent: 'space-around'}}>
                 <span className="navbar-brand mb-0 h1">Random Pick</span>
                 <span>
-                    <button className="btn btn-success" >Randomize</button>
+                    <button onClick={props.toggle} className="btn btn-success" >Randomize</button>
                 </span>
             </div>
         </nav>
