@@ -1,7 +1,7 @@
 import './App.css';
 import Navbar from './components/Navbar';
 import Inputs from './components/Inputs'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Popup from './components/Modal';
 
 function App() {
@@ -17,6 +17,7 @@ function App() {
     inputText.value = ''
     const newTask = [...task, text]
     setTask(newTask)
+    localStorage.setItem('task', JSON.stringify(newTask))
   }
 
   const deleteThis = (index) => {
@@ -38,6 +39,11 @@ function App() {
     setModal(!modal)
     getRandomElement(task)
   }
+
+  useEffect(()=> {
+    const storedtask = localStorage.getItem('task')
+    console.log(storedtask)
+  }, [])
 
 
   return (
